@@ -1,0 +1,41 @@
+﻿@page "/console"
+@rendermode InteractiveServer
+
+<PageTitle>Console</PageTitle>
+
+<h3>Console</h3>
+<div class="console-body">
+    <div class="console-container">
+        <div class="console-output">
+            <div class="output-line" id="outputLines">
+                @foreach(var line in outputLines)
+                {
+                    <div>@line</div>
+                    <br/>
+                }
+             </div>
+            <input type="text" placeholder="Enter command... Type 'Help' for some options." class="console-input"
+                   @bind="inputValue" @onkeydown="@HandleEnterKey">
+        </div>
+    </div>
+</div>
+@code {
+    private List<string> outputLines;
+    protected override async Task OnInitializedAsync()
+    {
+        outputLines = new List<string>()
+        {
+            "Welcome to my website!",
+            "Here you will find my professional accomplishments, along with a little bit about who I am.",
+            "If you want to get to know more about me, the work I have done, or what I can do for you, then please ask! (The console, that is)"
+        };
+    }
+    private string inputValue;
+    private void HandleEnterKey(KeyboardEventArgs e)
+    {
+        if (e.Code == "Enter" || e.Code == "NumpadEnter")
+        {
+            outputLines.Add(inputValue);
+        }
+    }
+}
