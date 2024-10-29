@@ -18,6 +18,8 @@ a, .btn-link {
 
 .content {
     padding-top: 5vh;
+    padding-bottom: 2vh;
+    min-height: 100vh;
 }
 
 h1:focus {
@@ -132,3 +134,11 @@ h1:focus {
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
+.navbar-title {
+    color:white;
+}
+
+.top-row{
+    height: auto !important;
+}
